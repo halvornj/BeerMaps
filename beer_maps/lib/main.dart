@@ -34,7 +34,6 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'BeerMaps'),
-      //home: Navbar(),
     );
   }
 }

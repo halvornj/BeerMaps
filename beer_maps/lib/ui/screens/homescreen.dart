@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../components/navbar.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -20,8 +21,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  int _currentPageIndex = 0; // Use this to track the current page index for navigating screens
+
+  void _onDestinationSelected(int index) {
+    setState(() {
+      _currentPageIndex = index;
+    });
+  }
 
   void _incrementCounter() {
+
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -84,6 +93,10 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+      bottomNavigationBar: Navbar(
+        onDestinationSelected: _onDestinationSelected,
+        currentPageIndex: _currentPageIndex,
+      ),
     );
   }
 }
