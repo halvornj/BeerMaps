@@ -4,10 +4,10 @@ class Navbar extends StatefulWidget {
   final Function(int) onDestinationSelected;
   final int currentPageIndex;
 
-  Navbar({required this.onDestinationSelected, required this.currentPageIndex});
+  const Navbar({super.key, required this.onDestinationSelected, required this.currentPageIndex});
 
   @override
-  _NavbarState createState() => _NavbarState();
+  State<Navbar> createState() => _NavbarState();
 }
 
 class _NavbarState extends State<Navbar> {
