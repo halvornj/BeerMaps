@@ -1,4 +1,6 @@
 import 'package:beer_maps/ui/screens/homescreen.dart';
+import 'package:beer_maps/ui/screens/listscreen.dart';
+import 'package:beer_maps/ui/screens/mapscreen.dart';
 import 'package:flutter/material.dart';
 import '../ui/components/navbar.dart';
 
@@ -33,7 +35,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'BeerMaps'),
+      routes: {
+        '/listScreen': (context) => const ListScreen(),
+        '/mapScreen': (context) => const MapScreen(),
+      },
+      home: const MyHomePage(title: "BeerMaps")
     );
   }
 }

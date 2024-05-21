@@ -12,17 +12,12 @@ class _ListScreenState extends State<ListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('List Screen'),
-      ),
-      body: const Center(
+    return const Center(
         child: Column(
           children: <Widget>[
             Text('This is the list screen.'),
           ],
         ),
-      ),
-    );
+      );
   }
 }
