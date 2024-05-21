@@ -50,13 +50,10 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: IndexedStack(
-        index: _currentPageIndex,
-        children: const <Widget>[
-          ListScreen(),
-          MapScreen(),
-        ],
-      ),
+      body: [
+          const ListScreen(),
+          const MapScreen(),
+        ][_currentPageIndex],
       bottomNavigationBar: Navbar(
         onDestinationSelected: _onDestinationSelected,
         currentPageIndex: _currentPageIndex,
