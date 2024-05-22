@@ -54,10 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
           const ListScreen(),
           const MapScreen(),
         ][_currentPageIndex],
-      bottomNavigationBar: Navbar(
-        onDestinationSelected: _onDestinationSelected,
-        currentPageIndex: _currentPageIndex,
-      ),
+
     );
   }
 }

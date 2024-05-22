@@ -1,3 +1,4 @@
+import 'package:beer_maps/ui/components/navbar.dart';
 import 'package:flutter/material.dart';
 
 class ListScreen extends StatefulWidget {
@@ -12,12 +13,12 @@ class _ListScreenState extends State<ListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-        child: Column(
-          children: <Widget>[
-            Text('This is the list screen.'),
-          ],
-        ),
-      );
+    return const Scaffold(
+
+      body: Center(
+        child: Text('This is the List screen.'),
+      ),
+      bottomNavigationBar: Navbar(currentRoute: "/list"),
+    );
   }
 }
