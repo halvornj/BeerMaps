@@ -16,25 +16,45 @@ class _NavbarState extends State<Navbar> {
       Row(
         children:<Widget>[
           Expanded(
-            child: TextButton.icon(
-              icon: const Icon(Icons.list),
-              label: const Text("List"),
-              onPressed: () {
-                if(widget.currentRoute != '/list') {
-                  Navigator.pushNamed(context, '/list');
-                }
-              },
+            child: FractionallySizedBox(
+              heightFactor: 1,
+              child: TextButton.icon(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0),
+                    ),
+                  ),
+                ),
+                icon: const Icon(Icons.list, size: 30),
+                label: const Text("List", style: TextStyle(fontSize: 20)),
+                onPressed: () {
+                  if(widget.currentRoute != '/list') {
+                    Navigator.pushNamed(context, '/list');
+                  }
+                },
+              ),
             ),
-          ),
+      ),
           Expanded(
-            child: TextButton.icon(
-              icon: const Icon(Icons.map),
-              label: const Text("Map"),
-              onPressed: () {
-                if(widget.currentRoute != '/map') {
-                  Navigator.pushNamed(context, '/map');
-                }
-              },
+            child: FractionallySizedBox(
+              heightFactor: 1,
+              child: TextButton.icon(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0),
+                    ),
+                  ),
+                ),
+                icon: const Icon(Icons.map, size: 30),
+                label: const Text("Map", style: TextStyle(fontSize: 20)),
+                onPressed: () {
+                  if(widget.currentRoute != '/map') {
+                    Navigator.pushNamed(context, '/map');
+                  }
+                },
+              ),
             ),
           )
         ],
