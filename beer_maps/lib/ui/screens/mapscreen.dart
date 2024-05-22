@@ -12,12 +12,14 @@ class MapScreen extends StatefulWidget {
 class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-
-      body: Center(
+    return  Scaffold(
+      appBar: AppBar(
+        title: const Text('BeerMaps'),
+      ),
+      body: const Center(
         child: Text('This is the map screen.'),
       ),
-      bottomNavigationBar: Navbar(currentRoute: "/map",)
+      bottomNavigationBar: const Navbar(currentRoute: "/map",)
     );
   }
 }

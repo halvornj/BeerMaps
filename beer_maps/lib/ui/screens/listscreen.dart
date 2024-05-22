@@ -13,12 +13,14 @@ class _ListScreenState extends State<ListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-
-      body: Center(
+    return  Scaffold(
+      appBar: AppBar(
+        title: const Text('BeerMaps'),
+      ),
+      body: const Center(
         child: Text('This is the List screen.'),
       ),
-      bottomNavigationBar: Navbar(currentRoute: "/list"),
+      bottomNavigationBar: const Navbar(currentRoute: "/list"),
     );
   }
 }
