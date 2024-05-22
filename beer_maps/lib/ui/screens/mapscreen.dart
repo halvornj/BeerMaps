@@ -19,7 +19,7 @@ class _MapScreenState extends State<MapScreen> {
       body: const Center(
         child: Text('This is the map screen.'),
       ),
-      bottomNavigationBar: FractionallySizedBox(heightFactor: 0.07, child: Navbar(currentRoute: "/map")),
+      bottomNavigationBar: const Navbar(currentRoute: "/map"),
     );
   }
 }

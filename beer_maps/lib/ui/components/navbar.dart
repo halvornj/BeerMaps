@@ -17,7 +17,7 @@ class _NavbarState extends State<Navbar> {
         children:<Widget>[
           Expanded(
             child: FractionallySizedBox(
-              heightFactor: 1,
+              heightFactor: .1,
               child: TextButton.icon(
                 style: ButtonStyle(
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -38,7 +38,7 @@ class _NavbarState extends State<Navbar> {
       ),
           Expanded(
             child: FractionallySizedBox(
-              heightFactor: 1,
+              heightFactor: .1,
               child: TextButton.icon(
                 style: ButtonStyle(
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(

@@ -20,7 +20,7 @@ class _ListScreenState extends State<ListScreen> {
       body: const Center(
         child: Text('This is the List screen.'),
       ),
-      bottomNavigationBar: FractionallySizedBox(heightFactor: 0.07, child: Navbar(currentRoute: "/list")),
+      bottomNavigationBar: const Navbar(currentRoute: "/list"),
     );
   }
 }
