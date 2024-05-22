@@ -20,10 +20,16 @@ class BarOverviewCard extends StatelessWidget{
           Column(
             children: <Widget>[
               MaterialButton(
-                child: const Text("Details"),
+                child: const Text("Show in map"),
                 onPressed: () {
                     //TODO
                 },
+              ),
+              MaterialButton(
+                child: const Text("Edit"),
+                  onPressed: (){
+                    //TODO
+                }
               )
             ],
           ),
