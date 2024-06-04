@@ -19,10 +19,10 @@ class _NavbarState extends State<Navbar> {
         children:<Widget>[
           Expanded(
             child: FractionallySizedBox(
-              heightFactor: 1,
+              heightFactor: .07,
               child: TextButton.icon(
                 style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(0),
                     ),
@@ -40,10 +40,10 @@ class _NavbarState extends State<Navbar> {
       ),
           Expanded(
             child: FractionallySizedBox(
-              heightFactor: 1,
+              heightFactor: .07,
               child: TextButton.icon(
                 style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(0),
                     ),
