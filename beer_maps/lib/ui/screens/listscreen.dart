@@ -18,9 +18,13 @@ class _ListScreenState extends State<ListScreen> {
         title: const Text('BeerMaps'),
       ),
       body: const Center(
-        child: Text('This is the List screen.'),
+        child: ListBody(
+          children: <Widget>[
+            Text('List of bars will be displayed here'),
+          ],
+        )
       ),
-      bottomNavigationBar: const Navbar(currentRoute: "/list"),
+      bottomNavigationBar: const Navbar(currentRoute: "/"),
     );
   }
 }

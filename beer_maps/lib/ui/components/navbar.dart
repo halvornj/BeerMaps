@@ -31,8 +31,8 @@ class _NavbarState extends State<Navbar> {
                 icon: const Icon(Icons.list, size: 30),
                 label:  Text(AppLocalizations.of(context)!.listTab, style: const TextStyle(fontSize: 20)),
                 onPressed: () {
-                  if(widget.currentRoute != '/list') {
-                    Navigator.pushNamed(context, '/list');
+                  if(widget.currentRoute != '/') {
+                    Navigator.pushNamed(context, '/');
                   }
                 },
               ),

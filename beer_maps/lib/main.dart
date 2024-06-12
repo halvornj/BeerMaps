@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../ui/components/navbar.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'dart:developer' as developer;
 
 void main() {
   runApp(const MyApp());
@@ -48,18 +49,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      routes : {
-        '/': (context) => const ListScreen(), // This is the default route to the ListScreen
-        '/list': (context) => const ListScreen(),
-        '/map': (context) => const MapScreen(),
-      },
+      initialRoute: '/',
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case '/':
-            return CustomPageRoute(child: const ListScreen(), settings: settings);
-          case '/list':
+            developer.log('onGenerateRoute called with ${settings.name}', name:'main.dart');
             return CustomPageRoute(child: const ListScreen(), settings: settings);
           case '/map':
+            developer.log('onGenerateRoute called with ${settings.name}', name:'main.dart');
             return CustomPageRoute(child: const MapScreen(), settings: settings);
           default:
             return CustomPageRoute(child: const ListScreen(), settings: settings);
