@@ -1,3 +1,4 @@
+import 'package:beer_maps/data/custom_page_route.dart';
 import 'package:beer_maps/ui/screens/homescreen.dart';
 import 'package:beer_maps/ui/screens/listscreen.dart';
 import 'package:beer_maps/ui/screens/mapscreen.dart';
@@ -53,32 +54,16 @@ class MyApp extends StatelessWidget {
         '/map': (context) => const MapScreen(),
       },
       onGenerateRoute: (settings) {
-        return PageRouteBuilder(
-            settings: settings,
-          pageBuilder: (context, animation, secondaryAnimation) {
-              if (settings.name == '/list') {
-                return const ListScreen();
-              }
-              else if (settings.name == '/map') {
-                return const MapScreen();
-              }
-              else {
-                return const ListScreen();  // This is the default route to the ListScreen
-              }
-            },
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            const begin = Offset(0.0, 1.0);
-            const end = Offset.zero;
-            const curve = Curves.ease;
-
-            var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-            return SlideTransition(
-              position: animation.drive(tween),
-              child: child,
-            );
-            },
-        );
+        switch (settings.name) {
+          case '/':
+            return CustomPageRoute(child: const ListScreen(), settings: settings);
+          case '/list':
+            return CustomPageRoute(child: const ListScreen(), settings: settings);
+          case '/map':
+            return CustomPageRoute(child: const MapScreen(), settings: settings);
+          default:
+            return CustomPageRoute(child: const ListScreen(), settings: settings);
+        }
       },
     );
   }
