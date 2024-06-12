@@ -52,6 +52,34 @@ class MyApp extends StatelessWidget {
         '/list': (context) => const ListScreen(),
         '/map': (context) => const MapScreen(),
       },
+      onGenerateRoute: (settings) {
+        return PageRouteBuilder(
+            settings: settings,
+          pageBuilder: (context, animation, secondaryAnimation) {
+              if (settings.name == '/list') {
+                return const ListScreen();
+              }
+              else if (settings.name == '/map') {
+                return const MapScreen();
+              }
+              else {
+                return const ListScreen();  // This is the default route to the ListScreen
+              }
+            },
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            const begin = Offset(0.0, 1.0);
+            const end = Offset.zero;
+            const curve = Curves.ease;
+
+            var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+            return SlideTransition(
+              position: animation.drive(tween),
+              child: child,
+            );
+            },
+        );
+      },
     );
   }
 }

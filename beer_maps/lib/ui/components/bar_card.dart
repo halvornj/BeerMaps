@@ -1,9 +1,9 @@
-import 'package:beer_maps/model/bar_overview.dart';
+import 'package:beer_maps/model/bar.dart';
 import 'package:flutter/material.dart';
 
-class BarOverviewCard extends StatelessWidget{
-  final BarOverview bar;
-  const BarOverviewCard({super.key, required this.bar});
+class BarCard extends StatelessWidget{
+  final Bar bar;
+  const BarCard({super.key, required this.bar});
 
   @override
   Widget build(BuildContext context) {

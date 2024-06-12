@@ -3,11 +3,12 @@ import 'dart:ffi';
 import 'package:beer_maps/model/price.dart';
 import 'package:flutter/cupertino.dart';
 
-final class BarOverview{
+final class Bar{
   Icon icon;
   String barName;
   Price price;
+  Uri image;
 
-  BarOverview({required this.icon, required this.barName, required this.price});
+  Bar({required this.icon, required this.barName, required this.price, required this.image});
 
 }
