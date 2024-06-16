@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../components/navbar.dart';
+import '../components/map.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -15,8 +16,8 @@ class _MapScreenState extends State<MapScreen> {
       appBar: AppBar(
         title: const Text('BeerMaps'),
       ),
-      body: const Center(
-        child: Text('This is the map screen.'),
+      body: Center(
+        child: MyMap(),
       ),
       bottomNavigationBar: const Navbar(currentRoute: "/map"),
     );

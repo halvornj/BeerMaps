@@ -43,7 +43,7 @@ android {
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
 
-        keystoreFile = project.rootProject.file("apikey.properties")
+        keystoreFile = project.rootProject.file("apikeys.properties")
         properties = Properties()
         properties.load(keystoreFile.inputStream())
         //return empty key in case something goes wrong
