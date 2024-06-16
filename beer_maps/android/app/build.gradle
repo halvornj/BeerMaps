@@ -43,11 +43,11 @@ android {
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
 
-        keystoreFile = project.rootProject.file("apikey.properties")
-        properties = Properties()
-        properties.load(keystoreFile.inputStream())
+        def keystoreFile = project.rootProject.file("apikeys.properties")
+        def properties = new Properties()
+        properties.load(new FileInputStream(keystoreFile))
         //return empty key in case something goes wrong
-        mapsApiKey = properties.getProperty("MAPS_API_KEY") ?: ""
+        def mapsApiKey = properties.getProperty("MAPS_API_KEY") ?: ""
         buildConfigField("String","MAPS_API_KEY",mapsApiKey)
     }
 
