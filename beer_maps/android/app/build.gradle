@@ -26,7 +26,7 @@ if (flutterVersionName == null) {
 android {
     namespace = "com.example.beer_maps"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "26.3.11579264"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -48,7 +48,11 @@ android {
         properties.load(new FileInputStream(keystoreFile))
         //return empty key in case something goes wrong
         def mapsApiKey = properties.getProperty("MAPS_API_KEY") ?: ""
+        manifestPlaceholders.put("MAPS_API_KEY", mapsApiKey)
         buildConfigField("String","MAPS_API_KEY",mapsApiKey)
+    }
+    buildFeatures{
+        buildConfig = true
     }
 
     buildTypes {
@@ -58,6 +62,7 @@ android {
             signingConfig = signingConfigs.debug
         }
     }
+
 }
 
 flutter {
