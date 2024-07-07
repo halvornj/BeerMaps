@@ -61,12 +61,10 @@ class Place {
     required this.types,
     required this.internationalPhoneNumber,
     required this.formattedAddress,
-    required this.addressComponents,
     required this.location,
     required this.rating,
     required this.googleMapsUri,
     required this.websiteUri,
-    required this.regularOpeningHours,
     required this.utcOffsetMinutes,
     required this.adrFormatAddress,
     required this.businessStatus,
@@ -78,7 +76,6 @@ class Place {
     required this.primaryTypeDisplayName,
     required this.servesBeer,
     required this.servesWine,
-    required this.currentOpeningHours,
     required this.primaryType,
     required this.shortFormattedAddress,
     required this.editorialSummary,
@@ -96,12 +93,10 @@ class Place {
   final List<String> types;
   final String internationalPhoneNumber;
   final String formattedAddress;
-  final List<AddressComponents> addressComponents;
   final Location location;
   final num rating;
   final String googleMapsUri;
   final String websiteUri;
-  final RegularOpeningHours regularOpeningHours;
   final num utcOffsetMinutes;
   final String adrFormatAddress;
   final String businessStatus;
@@ -113,7 +108,6 @@ class Place {
   final PrimaryTypeDisplayName primaryTypeDisplayName;
   final bool servesBeer;
   final bool servesWine;
-  final CurrentOpeningHours currentOpeningHours;
   final String primaryType;
   final String shortFormattedAddress;
   final EditorialSummary editorialSummary;
@@ -133,12 +127,10 @@ class Place {
       types: json['types'] != null ? json['types'].cast<String>() : [],
       internationalPhoneNumber: json['internationalPhoneNumber'],
       formattedAddress: json['formattedAddress'],
-      addressComponents: json['addressComponents'] != null ? (json['addressComponents'] as List).map((i) => AddressComponents.fromJson(i)).toList() : [],
       location: Location.fromJson(json['location']),
       rating: json['rating'],
       googleMapsUri: json['googleMapsUri'],
       websiteUri: json['websiteUri'],
-      regularOpeningHours: RegularOpeningHours.fromJson(json['regularOpeningHours']),
       utcOffsetMinutes: json['utcOffsetMinutes'],
       adrFormatAddress: json['adrFormatAddress'],
       businessStatus: json['businessStatus'],
@@ -150,7 +142,6 @@ class Place {
       primaryTypeDisplayName: PrimaryTypeDisplayName.fromJson(json['primaryTypeDisplayName']),
       servesBeer: json['servesBeer'],
       servesWine: json['servesWine'],
-      currentOpeningHours: CurrentOpeningHours.fromJson(json['currentOpeningHours']),
       primaryType: json['primaryType'],
       shortFormattedAddress: json['shortFormattedAddress'],
       editorialSummary: EditorialSummary.fromJson(json['editorialSummary']),
@@ -411,189 +402,13 @@ DisplayName copyWith({  required String text,
 
 }
 
-/// openNow : true
-/// periods : [{"open":{"day":0,"hour":11,"minute":0},"close":{"day":0,"hour":20,"minute":0}},{"open":{"day":1,"hour":11,"minute":30},"close":{"day":1,"hour":20,"minute":0}},{"open":{"day":2,"hour":11,"minute":30},"close":{"day":2,"hour":20,"minute":0}},{"open":{"day":3,"hour":11,"minute":30},"close":{"day":3,"hour":20,"minute":0}},{"open":{"day":4,"hour":11,"minute":30},"close":{"day":4,"hour":20,"minute":0}},{"open":{"day":5,"hour":11,"minute":30},"close":{"day":5,"hour":20,"minute":0}},{"open":{"day":6,"hour":11,"minute":0},"close":{"day":6,"hour":20,"minute":0}}]
-/// weekdayDescriptions : ["Monday: 11:30 AM – 8:00 PM","Tuesday: 11:30 AM – 8:00 PM","Wednesday: 11:30 AM – 8:00 PM","Thursday: 11:30 AM – 8:00 PM","Friday: 11:30 AM – 8:00 PM","Saturday: 11:00 AM – 8:00 PM","Sunday: 11:00 AM – 8:00 PM"]
-
-class RegularOpeningHours {
-  RegularOpeningHours({
-      required bool openNow,
-      required List<Periods> periods,
-      required List<String> weekdayDescriptions,}){
-    _openNow = openNow;
-    _periods = periods;
-    _weekdayDescriptions = weekdayDescriptions;
-}
-
-  RegularOpeningHours.fromJson(dynamic json) {
-    _openNow = json['openNow'];
-    if (json['periods'] != null) {
-      _periods = [];
-      json['periods'].forEach((v) {
-        _periods.add(Periods.fromJson(v));
-      });
-    }
-    _weekdayDescriptions = json['weekdayDescriptions'] != null ? json['weekdayDescriptions'].cast<String>() : [];
-  }
-  bool _openNow = false;
-  List<Periods> _periods = [];
-  List<String> _weekdayDescriptions = [];
-RegularOpeningHours copyWith({  required bool openNow,
-  required List<Periods> periods,
-  required List<String> weekdayDescriptions,
-}) => RegularOpeningHours(  openNow: openNow ?? _openNow,
-  periods: periods ?? _periods,
-  weekdayDescriptions: weekdayDescriptions ?? _weekdayDescriptions,
-);
-  bool get openNow => _openNow;
-  List<Periods> get periods => _periods;
-  List<String> get weekdayDescriptions => _weekdayDescriptions;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['openNow'] = _openNow;
-    if (_periods != null) {
-      map['periods'] = _periods.map((v) => v.toJson()).toList();
-    }
-    map['weekdayDescriptions'] = _weekdayDescriptions;
-    return map;
-  }
-
-}
-
-/// open : {"day":0,"hour":11,"minute":0}
-/// close : {"day":0,"hour":20,"minute":0}
-
-class Periods {
-  Periods({
-      Open open,
-      Close close,}){
-    _open = open;
-    _close = close;
-}
-
-  Periods.fromJson(dynamic json) {
-    _open = json['open'] != null ? Open.fromJson(json['open']) : null;
-    _close = json['close'] != null ? Close.fromJson(json['close']) : null;
-  }
-  Open _open;
-  Close _close;
-Periods copyWith({  Open open,
-  Close close,
-}) => Periods(  open: open ?? _open,
-  close: close ?? _close,
-);
-  Open get open => _open;
-  Close get close => _close;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    if (_open != null) {
-      map['open'] = _open.toJson();
-    }
-    if (_close != null) {
-      map['close'] = _close.toJson();
-    }
-    return map;
-  }
-
-}
-
-/// day : 0
-/// hour : 20
-/// minute : 0
-
-class Close {
-  Close({
-      num day,
-      num hour,
-      num minute,}){
-    _day = day;
-    _hour = hour;
-    _minute = minute;
-}
-
-  Close.fromJson(dynamic json) {
-    _day = json['day'];
-    _hour = json['hour'];
-    _minute = json['minute'];
-  }
-  num _day;
-  num _hour;
-  num _minute;
-Close copyWith({  num day,
-  num hour,
-  num minute,
-}) => Close(  day: day ?? _day,
-  hour: hour ?? _hour,
-  minute: minute ?? _minute,
-);
-  num get day => _day;
-  num get hour => _hour;
-  num get minute => _minute;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['day'] = _day;
-    map['hour'] = _hour;
-    map['minute'] = _minute;
-    return map;
-  }
-
-}
-
-/// day : 0
-/// hour : 11
-/// minute : 0
-
-class Open {
-  Open({
-      num day,
-      num hour,
-      num minute,}){
-    _day = day;
-    _hour = hour;
-    _minute = minute;
-}
-
-  Open.fromJson(dynamic json) {
-    _day = json['day'];
-    _hour = json['hour'];
-    _minute = json['minute'];
-  }
-  num _day;
-  num _hour;
-  num _minute;
-Open copyWith({  num day,
-  num hour,
-  num minute,
-}) => Open(  day: day ?? _day,
-  hour: hour ?? _hour,
-  minute: minute ?? _minute,
-);
-  num get day => _day;
-  num get hour => _hour;
-  num get minute => _minute;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['day'] = _day;
-    map['hour'] = _hour;
-    map['minute'] = _minute;
-    return map;
-  }
-
-}
-
-
-
 /// latitude : 37.7959647
 /// longitude : -122.3934171
 
 class Location {
   Location({
-      num latitude,
-      num longitude,}){
+      required num latitude,
+      required num longitude,}){
     _latitude = latitude;
     _longitude = longitude;
 }
@@ -602,10 +417,10 @@ class Location {
     _latitude = json['latitude'];
     _longitude = json['longitude'];
   }
-  num _latitude;
-  num _longitude;
-Location copyWith({  num latitude,
-  num longitude,
+  num _latitude = 0;
+  num _longitude = 0;
+Location copyWith({  required num latitude,
+  required num longitude,
 }) => Location(  latitude: latitude ?? _latitude,
   longitude: longitude ?? _longitude,
 );
