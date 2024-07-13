@@ -10,13 +10,12 @@ class ListScreen extends StatefulWidget {
   State<ListScreen> createState() => _ListScreenState();
 }
 class _ListScreenState extends State<ListScreen> {
-  String positionStr = "Loading...";
-  //todo try to get this from session, if not THEN get from locator like this. essentially we wanna cache, duh
+  Position? position;
 
   void _updatePosition() async {
-    Position position = await determinePosition();
+    Position newPosition = await determinePosition();
     setState(() {
-      positionStr = "Lat: ${position.latitude}, Long: ${position.longitude}";
+      position = newPosition;
     });
   }
   @override
@@ -27,7 +26,7 @@ class _ListScreenState extends State<ListScreen> {
         title: const Text('BeerMaps'),
       ),
       body: Center(
-        child: Text(positionStr),
+        child: Text(position?.toString() ?? "Loading..."),
       ),
       bottomNavigationBar: const Navbar(currentRoute: "/list"),
     );
