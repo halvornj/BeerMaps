@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">BeerMaps</string>
+    <string name="app_name" translatable="false">BeerMaps</string>
+    <string name="barcard_show_map_button">Show in map</string>
+    <string name="barcard_edit_button">Edit</string>
 </resources>

@@ -49,6 +49,9 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    androidResources {
+        generateLocaleConfig = true
+    }
 }
 
 dependencies {
@@ -69,12 +72,14 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation("androidx.compose.material:material:1.7.0")
+    implementation(libs.androidx.material)
 
     //maps
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom")) //todo :kotlinversion
-    implementation("com.google.android.libraries.places:places:3.5.0")
+    implementation(libs.kotlin.bom)
+    implementation(libs.places)
 
+    //ktor/coil
+    implementation(libs.coil.compose)
 }
 
 secrets {
