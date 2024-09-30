@@ -4,8 +4,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -23,6 +25,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
@@ -42,7 +45,8 @@ fun BarCard(bar:Place, modifier:Modifier = Modifier) {
         shape = RoundedCornerShape(percent = 10),
         modifier = modifier
             .padding(6.dp)
-            .border(1.dp, Color.Gray, shape = RoundedCornerShape(percent = 10)),
+            .border(1.dp, Color.Gray, shape = RoundedCornerShape(percent = 10))
+            .fillMaxSize()
     ) {
         Row(
             modifier = Modifier.padding(8.dp),
@@ -56,16 +60,15 @@ fun BarCard(bar:Place, modifier:Modifier = Modifier) {
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
                     .clip(RoundedCornerShape(percent = 10))
-                    .background(Color(bar.iconBackgroundColor))
+                    .background(Color(bar.iconBackgroundColor ?: 0xFFCCCCCC.toInt()) //default to lightgray, todo theme?
+                    )
                     .padding(5.dp)
                 ,
-
-
                 )
             Column(
                 modifier = Modifier
                     .fillMaxWidth(fraction = 0.5f)
-                    .padding(4.dp),
+                    .padding(horizontal = 5.dp, vertical = 4.dp),
                 verticalArrangement = Arrangement.SpaceEvenly,
                 horizontalAlignment = Alignment.Start
 
@@ -74,18 +77,32 @@ fun BarCard(bar:Place, modifier:Modifier = Modifier) {
                 Text(text = "50kr", style = MaterialTheme.typography.bodyMedium)
             }
             Column(
-                horizontalAlignment = Alignment.End,
                 modifier = Modifier
-                    .padding(4.dp)
+                    .padding(0.dp),
+                horizontalAlignment = Alignment.End,
+                verticalArrangement = Arrangement.Top
 
             ) {
                 //<show in map> and <edit> buttons
-                Button(onClick = { /*TODO*/ }) {
-                    Text(stringResource(id = R.string.barcard_show_map_button))
+                Button(
+                    modifier = Modifier
+                        .fillMaxWidth(0.8f)
+                        .height(IntrinsicSize.Max),
+                    onClick = { /*TODO*/ },
+                ) {
+                    Text(text = stringResource(id = R.string.barcard_show_map_button),
+                        textAlign = TextAlign.Center
+                    )
                 }
-                Divider(modifier = Modifier.height(1.dp))
-                Button(onClick = { /*TODO*/ }) {
-                    Text(stringResource(id = R.string.barcard_edit_button))
+                Button(
+                    modifier = Modifier
+                        .fillMaxWidth(0.8f)
+                        .height(IntrinsicSize.Max),
+                    onClick = { /*TODO*/ }
+                ) {
+                    Text(text =stringResource(id = R.string.barcard_edit_button),
+                        textAlign = TextAlign.Center
+                    )
                 }
             }
         }

@@ -77,6 +77,8 @@ dependencies {
     //maps
     implementation(libs.kotlin.bom)
     implementation(libs.places)
+    implementation(libs.play.services.maps)
+    implementation(libs.maps.compose)
 
     //ktor/coil
     implementation(libs.coil.compose)

@@ -31,6 +31,7 @@ fun ListScreen(
     viewModel:ListScreenViewModel = viewModel()
 ){
     val placesList: PlacesList by viewModel.placesState.collectAsState()
+
     LazyColumn (
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,

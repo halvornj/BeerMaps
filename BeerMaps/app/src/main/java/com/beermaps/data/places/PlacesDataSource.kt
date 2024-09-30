@@ -17,7 +17,7 @@ import com.google.android.libraries.places.api.net.SearchNearbyRequest
 
 class PlacesDataSource {
 
-    fun getNearbyPlaces(placesClient: PlacesClient, radius:Double=1500.0): List<Place> {
+    fun getNearbyPlaces(placesClient: PlacesClient, radius:Double=10000.0): List<Place> {
         //todo implement position - I'm thinking optional, if not provided, call the position-getter here.
 
         //!this is the mock data :)
@@ -59,6 +59,7 @@ class PlacesDataSource {
                         //boy I sure hope this is the right field for the photoReference
                         .build(),
                 )
+                mock.location = LatLng(59.96362023270452, 10.730513880953739)
         return listOf(mock.build())
         //END mock data
 
@@ -69,9 +70,9 @@ class PlacesDataSource {
             Place.Field.CURRENT_OPENING_HOURS,
             //Place.Field.EDITORIAL_SUMMARY,
             Place.Field.ICON_MASK_URL,
-            Place.Field.ICON_URL,
             Place.Field.ICON_BACKGROUND_COLOR,
             Place.Field.DISPLAY_NAME,
+            Place.Field.LOCATION,
             //Place.Field.RATING,
             Place.Field.PHOTO_METADATAS, //this may be too many photos, we just need a cover photo
             //Place.Field.SERVES_BEER,
@@ -90,7 +91,8 @@ class PlacesDataSource {
         //build the request
         val request = SearchNearbyRequest.builder(area, responseFields)
             .setIncludedTypes(includedTypes)
-            .setMaxResultCount(10)
+            .setMaxResultCount(50)
+            .setRankPreference(SearchNearbyRequest.RankPreference.DISTANCE)
             .build()
 
 

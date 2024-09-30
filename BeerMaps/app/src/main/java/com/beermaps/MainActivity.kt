@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             BeerMapsTheme {
                 //maps api
-                val apiKey = BuildConfig.PLACES_API_KEY
+                val apiKey = BuildConfig.MAPS_API_KEY
                 if (apiKey.isEmpty() || apiKey == "DEFAULT_API_KEY") {
                     Log.e("Places init", "No api key")}
                 Places.initializeWithNewPlacesApiEnabled(applicationContext, apiKey)
