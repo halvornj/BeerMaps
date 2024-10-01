@@ -60,7 +60,7 @@ class PlacesDataSource {
                         .build(),
                 )
                 mock.location = LatLng(59.96362023270452, 10.730513880953739)
-        return listOf(mock.build())
+        //return listOf(mock.build())
         //END mock data
 
         //params for request:

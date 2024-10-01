@@ -1,6 +1,7 @@
 package com.beermaps.ui.listscreen
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -28,6 +29,7 @@ import com.google.android.libraries.places.api.model.TimeOfWeek
 @Composable
 fun ListScreen(
     navController: NavController,
+    padding : PaddingValues,
     viewModel:ListScreenViewModel = viewModel()
 ){
     val placesList: PlacesList by viewModel.placesState.collectAsState()
@@ -35,7 +37,7 @@ fun ListScreen(
     LazyColumn (
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.fillMaxSize().padding(4.dp)
+        modifier = Modifier.fillMaxSize().padding(padding)
     ){
         items(placesList.places){place ->
             BarCard(bar = place)

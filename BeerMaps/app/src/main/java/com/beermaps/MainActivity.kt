@@ -38,8 +38,8 @@ class MainActivity : ComponentActivity() {
                     bottomBar = { BottomBar(navController = navController) }
                 ) { innerPadding ->
                     NavHost(navController = navController, startDestination = "ListScreen") {
-                        composable("ListScreen") { ListScreen(navController = navController) }
-                        composable("MapScreen") { MapScreen(navController = navController) }
+                        composable("ListScreen") { ListScreen(navController = navController, padding = innerPadding) }
+                        composable("MapScreen") { MapScreen(navController = navController, padding = innerPadding) }
                     }
                 }
             }

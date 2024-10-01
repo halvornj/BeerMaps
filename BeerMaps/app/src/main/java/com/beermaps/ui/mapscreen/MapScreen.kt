@@ -1,6 +1,8 @@
 package com.beermaps.ui.mapscreen
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -18,6 +20,7 @@ import com.google.maps.android.compose.rememberMarkerState
 @Composable
 fun MapScreen(
     navController: NavController,
+    padding : PaddingValues,
     viewModel: MapScreenViewModel = viewModel()
 ){
     val placesList: PlacesList by viewModel.placesState.collectAsState()
@@ -29,8 +32,9 @@ fun MapScreen(
 
     }
     GoogleMap(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize().padding(padding),
         cameraPositionState = cameraPosition,
+
     ){
         placesList.places.forEach { place ->
             Marker(
