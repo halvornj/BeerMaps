@@ -91,7 +91,7 @@ class PlacesDataSource {
         //build the request
         val request = SearchNearbyRequest.builder(area, responseFields)
             .setIncludedTypes(includedTypes)
-            .setMaxResultCount(50)
+            .setMaxResultCount(20)
             .setRankPreference(SearchNearbyRequest.RankPreference.DISTANCE)
             .build()
 
