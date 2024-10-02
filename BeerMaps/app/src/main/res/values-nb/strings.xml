@@ -2,4 +2,5 @@
 <resources>
     <string name="barcard_show_map_button">Vis på karet</string>
     <string name="barcard_edit_button">rediger</string>
+    <string name="your_position">Din posisjon</string>
 </resources>

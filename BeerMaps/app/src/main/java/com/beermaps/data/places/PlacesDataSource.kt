@@ -79,8 +79,8 @@ class PlacesDataSource {
             //Place.Field.SERVES_WINE,
             ) //the fields we want in response
         val location = Location("dummy") //TODO this should be func-param or get from provider
-        location.latitude = 59.96362023270452
-        location.longitude =  10.730513880953739
+        location.latitude = 59.9436420569669
+        location.longitude =  10.718473550005665
 
         val center = LatLng(location.latitude, location.longitude)
         val area = CircularBounds.newInstance(center, radius)

@@ -7,8 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.beermaps.R
 import com.beermaps.ui.listscreen.PlacesList
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
@@ -26,7 +28,7 @@ fun MapScreen(
     val placesList: PlacesList by viewModel.placesState.collectAsState()
 
 
-    val userPosition = LatLng(59.96362023270452, 10.730513880953739) //TODO get this from the (currently non-existent) location service
+    val userPosition = LatLng(59.94367654887521, 10.718516590580798) //TODO get this from the (currently non-existent) location service
     val cameraPosition = rememberCameraPositionState{
         position= CameraPosition.fromLatLngZoom(userPosition, 10f)
 
@@ -36,13 +38,19 @@ fun MapScreen(
         cameraPositionState = cameraPosition,
 
     ){
+        Marker(
+            state = rememberMarkerState(position = userPosition),
+            title= stringResource(id = R.string.your_position),
+        )
         placesList.places.forEach { place ->
-            Marker(
-                state = rememberMarkerState(position = place.location),
-                title = place.displayName,
-                snippet = place.editorialSummary
-
-            )
+            if(place.location != null) { //place markers on the places with gotten locations
+                Marker(
+                    state = rememberMarkerState(position = place.location!!),
+                    title = place.displayName,
+                    snippet = place.editorialSummary,
+                    
+                )
+            }
         }
     }
 }
