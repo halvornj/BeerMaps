@@ -98,7 +98,6 @@ class PlacesDataSource {
 
         val task = placesClient.searchNearby(request)
         val result = Tasks.await(task).places
-
         return result
     }
 }
